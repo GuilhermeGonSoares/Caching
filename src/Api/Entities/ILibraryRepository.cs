@@ -6,5 +6,4 @@ public interface ILibraryRepository
     Task<List<Library>> GetLibraries();
     void Add(Library library);
     void RemoveLibrary(Library library);
-    Task SaveChangesAsync();
 }

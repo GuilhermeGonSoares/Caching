@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 
-GET {{Api_HostAddress}}/api/libraries/b2cfe266-ff67-4742-bd62-5853e1ea719e
+GET {{Api_HostAddress}}/api/libraries/cba34e82-c5b3-46cf-8b3b-26556b056eeb
 Accept: application/json
 
 ###
@@ -19,10 +19,26 @@ POST {{Api_HostAddress}}/api/libraries
 Content-Type: application/json
 
 {
-    "name": "Library 1"
+    "name": "Tainara Library"
 }
 
 ###
 
-DELETE {{Api_HostAddress}}/api/libraries/b2cfe266-ff67-4742-bd62-5853e1ea719e
+DELETE {{Api_HostAddress}}/api/libraries/CBA34E82-C5B3-46CF-8B3B-26556B056EEB
 Accept: application/json
+
+###
+
+POST {{Api_HostAddress}}/api/libraries/4f10c512-0eeb-493e-8ab3-4050d2c444c7/books
+Content-Type: application/json
+
+[
+    {
+        "title": "Os 7 maridos de Evelyn Hugo",
+        "author": "Taylor Jenkins Reid"
+    },
+    {
+        "title": "Jantar Secreto",
+        "author": "Raphael Montes"
+    }
+]

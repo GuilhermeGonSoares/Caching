@@ -19,7 +19,12 @@ public class Library
 
     public void AddBook(string title, string author)
     {
-        Books.Add(new Book(title, author, true));
+        if (Books.Any(b => b.Title == title))
+        {
+            return;
+        }
+        var book = new Book(title, author, true);
+        Books.Add(book);
     }
 
     public void RemoveBook(Guid bookId)

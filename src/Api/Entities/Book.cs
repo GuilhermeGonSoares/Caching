@@ -2,7 +2,7 @@ namespace Api.Entities;
 
 public class Book
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    public Guid Id { get; private set; }
     public string Title { get; private set; }
     public string Author { get; private set; }
     public bool IsAvailable { get; private set; }
@@ -13,6 +13,7 @@ public class Book
 
     public Book(string title, string author, bool isAvailable)
     {
+        Id = Guid.NewGuid();
         Title = title;
         Author = author;
         IsAvailable = isAvailable;
