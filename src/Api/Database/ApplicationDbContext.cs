@@ -1,5 +1,5 @@
 using Api.Entities;
-using Api.UnitOfWork;
+using Api.Interfaces.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Database;

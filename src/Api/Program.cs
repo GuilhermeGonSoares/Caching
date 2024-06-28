@@ -1,8 +1,8 @@
 using Api.Database;
 using Api.Entities;
+using Api.Interfaces.UnitOfWork;
 using Api.Repositories;
 using Api.Services;
-using Api.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
 builder.Services.AddScoped<LibraryService>();
 builder.Services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

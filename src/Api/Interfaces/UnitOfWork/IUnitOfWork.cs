@@ -1,4 +1,4 @@
-namespace Api.UnitOfWork;
+namespace Api.Interfaces.UnitOfWork;
 
 public interface IUnitOfWork
 {

@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 
-GET {{Api_HostAddress}}/api/libraries/1
+GET {{Api_HostAddress}}/api/libraries/6
 Accept: application/json
 
 ###
@@ -19,17 +19,17 @@ POST {{Api_HostAddress}}/api/libraries
 Content-Type: application/json
 
 {
-    "name": "Tainara Library"
+    "name": "Tainara"
 }
 
 ###
 
-DELETE {{Api_HostAddress}}/api/libraries/CBA34E82-C5B3-46CF-8B3B-26556B056EEB
+DELETE {{Api_HostAddress}}/api/libraries/5
 Accept: application/json
 
 ###
 
-POST {{Api_HostAddress}}/api/libraries/1/books
+POST {{Api_HostAddress}}/api/libraries/6/books
 Content-Type: application/json
 
 [
@@ -44,7 +44,7 @@ Content-Type: application/json
 ]
 
 ###
-DELETE {{Api_HostAddress}}/api/libraries/1/books/5
+DELETE {{Api_HostAddress}}/api/libraries/6/books/7
 Accept: application/json
 
 ###

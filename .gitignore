@@ -7,6 +7,7 @@
 
 .config
 .vscode
+library.db*
 
 # User-specific files
 *.suo
