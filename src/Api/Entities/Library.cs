@@ -2,7 +2,7 @@ namespace Api.Entities;
 
 public class Library
 {
-    public Guid Id { get; private set; }
+    public int Id { get; private set; }
     public string Name { get; private set; }
     public List<Book> Books { get; private set; }
 
@@ -12,7 +12,6 @@ public class Library
 
     public Library(string name)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Books = [];
     }
@@ -27,7 +26,7 @@ public class Library
         Books.Add(book);
     }
 
-    public void RemoveBook(Guid bookId)
+    public void RemoveBook(int bookId)
     {
         var book =
             Books.FirstOrDefault(b => b.Id == bookId)
@@ -36,7 +35,7 @@ public class Library
         Books.Remove(book);
     }
 
-    public void BorrowBook(Guid bookId)
+    public void BorrowBook(int bookId)
     {
         var book =
             Books.FirstOrDefault(b => b.Id == bookId)
@@ -45,7 +44,7 @@ public class Library
         book.Borrow();
     }
 
-    public void ReturnBook(Guid bookId)
+    public void ReturnBook(int bookId)
     {
         var book =
             Books.FirstOrDefault(b => b.Id == bookId)

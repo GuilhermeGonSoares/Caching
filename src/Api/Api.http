@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 
-GET {{Api_HostAddress}}/api/libraries/cba34e82-c5b3-46cf-8b3b-26556b056eeb
+GET {{Api_HostAddress}}/api/libraries/1
 Accept: application/json
 
 ###
@@ -29,16 +29,30 @@ Accept: application/json
 
 ###
 
-POST {{Api_HostAddress}}/api/libraries/4f10c512-0eeb-493e-8ab3-4050d2c444c7/books
+POST {{Api_HostAddress}}/api/libraries/1/books
 Content-Type: application/json
 
 [
     {
-        "title": "Os 7 maridos de Evelyn Hugo",
+        "title": "Daisy Jones",
         "author": "Taylor Jenkins Reid"
     },
     {
-        "title": "Jantar Secreto",
-        "author": "Raphael Montes"
+        "title": "The Silent Patient",
+        "author": "Alex Michaelides"
     }
 ]
+
+###
+DELETE {{Api_HostAddress}}/api/libraries/1/books/3
+Accept: application/json
+
+###
+PUT {{Api_HostAddress}}/api/libraries/1/books/2/borrow
+Accept: application/json
+
+###
+PUT {{Api_HostAddress}}/api/libraries/1/books/2/return
+
+###
+GET {{Api_HostAddress}}/api/libraries/1/books?borrowed=false

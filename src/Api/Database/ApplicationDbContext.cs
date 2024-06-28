@@ -19,14 +19,31 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
+        // Mapeamento para a entidade Library
+        modelBuilder.Entity<Library>().HasKey(l => l.Id); // Definindo a chave primária
+
+        modelBuilder.Entity<Library>().Property(l => l.Id).ValueGeneratedOnAdd(); // Configura ID para autoincremento
+
+        modelBuilder.Entity<Library>().Property(l => l.Name).IsRequired(); // Define o nome como obrigatório
+
         modelBuilder
             .Entity<Library>()
-            .HasMany(l => l.Books)
-            .WithOne()
-            .HasForeignKey("LibraryId") // Apenas se você tiver uma propriedade LibraryId em Book
-            .OnDelete(DeleteBehavior.Cascade); // Opção para deletar todos os livros quando uma biblioteca é deletada
+            .HasMany(l => l.Books) // Relacionamento um-para-muitos com Books
+            .WithOne() // Sem propriedade de navegação inversa especificada
+            .HasForeignKey("LibraryId"); // Chave estrangeira em Books referenciando Library
 
-        base.OnModelCreating(modelBuilder);
+        // Mapeamento para a entidade Book
+        modelBuilder.Entity<Book>().HasKey(b => b.Id); // Definindo a chave primária
+
+        modelBuilder.Entity<Book>().Property(b => b.Id).ValueGeneratedOnAdd(); // Configura ID para autoincremento
+
+        modelBuilder.Entity<Book>().Property(b => b.Title).IsRequired(); // Título é obrigatório
+
+        modelBuilder.Entity<Book>().Property(b => b.Author).IsRequired(); // Autor é obrigatório
+
+        modelBuilder.Entity<Book>().Property(b => b.IsAvailable).IsRequired(); // Disponibilidade é obrigatório, define como um campo não nulo
     }
 
     public void LogChanges(ApplicationDbContext context)

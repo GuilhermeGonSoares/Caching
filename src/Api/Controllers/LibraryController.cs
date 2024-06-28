@@ -19,7 +19,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
         await _libraryService.GetLibraries();
 
     [HttpGet("{libraryId}")]
-    public async Task<ActionResult<Library>> GetLibrary(Guid libraryId)
+    public async Task<ActionResult<Library>> GetLibrary(int libraryId)
     {
         var library = await _libraryService.GetLibrary(libraryId);
 
@@ -41,7 +41,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
     }
 
     [HttpDelete("{libraryId}")]
-    public async Task<ActionResult> RemoveLibrary(Guid libraryId)
+    public async Task<ActionResult> RemoveLibrary(int libraryId)
     {
         try
         {
@@ -55,7 +55,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
     }
 
     [HttpPost("{libraryId}/books")]
-    public async Task<ActionResult> AddBook(Guid libraryId, List<CreateBookRequest> books)
+    public async Task<ActionResult> AddBook(int libraryId, List<CreateBookRequest> books)
     {
         try
         {
@@ -72,7 +72,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
     }
 
     [HttpDelete("{libraryId}/books/{bookId}")]
-    public async Task<ActionResult> RemoveBook(Guid libraryId, Guid bookId)
+    public async Task<ActionResult> RemoveBook(int libraryId, int bookId)
     {
         try
         {
@@ -86,7 +86,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
     }
 
     [HttpPut("{libraryId}/books/{bookId}/borrow")]
-    public async Task<ActionResult> BorrowBook(Guid libraryId, Guid bookId)
+    public async Task<ActionResult> BorrowBook(int libraryId, int bookId)
     {
         try
         {
@@ -100,7 +100,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
     }
 
     [HttpPut("{libraryId}/books/{bookId}/return")]
-    public async Task<ActionResult> ReturnBook(Guid libraryId, Guid bookId)
+    public async Task<ActionResult> ReturnBook(int libraryId, int bookId)
     {
         try
         {
@@ -114,7 +114,7 @@ public class LibraryController(LibraryService libraryService) : ControllerBase
     }
 
     [HttpGet("{libraryId}/books")]
-    public async Task<ActionResult<List<Book>>> GetBooks(Guid libraryId, bool borrowed)
+    public async Task<ActionResult<List<Book>>> GetBooks(int libraryId, bool borrowed)
     {
         try
         {

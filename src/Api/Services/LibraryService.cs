@@ -8,12 +8,12 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
     private readonly ILibraryRepository _libraryRepository = libraryRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-    public async Task<Library?> GetLibrary(Guid libraryId) =>
+    public async Task<Library?> GetLibrary(int libraryId) =>
         await _libraryRepository.GetLibrary(libraryId);
 
     public async Task<List<Library>> GetLibraries() => await _libraryRepository.GetLibraries();
 
-    public async Task<Guid> Add(string name)
+    public async Task<int> Add(string name)
     {
         var library = new Library(name);
         _libraryRepository.Add(library);
@@ -21,7 +21,7 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
         return library.Id;
     }
 
-    public async Task RemoveLibrary(Guid libraryId)
+    public async Task RemoveLibrary(int libraryId)
     {
         var library =
             await _libraryRepository.GetLibrary(libraryId)
@@ -31,7 +31,7 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
         return;
     }
 
-    public async Task AddBook(Guid libraryId, List<(string title, string author)> books)
+    public async Task AddBook(int libraryId, List<(string title, string author)> books)
     {
         var library =
             await _libraryRepository.GetLibrary(libraryId)
@@ -40,7 +40,7 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
         await _unitOfWork.SaveChangesAsync();
     }
 
-    public async Task RemoveBook(Guid libraryId, Guid bookId)
+    public async Task RemoveBook(int libraryId, int bookId)
     {
         var library =
             await _libraryRepository.GetLibrary(libraryId)
@@ -49,7 +49,7 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
         await _unitOfWork.SaveChangesAsync();
     }
 
-    public async Task BorrowBook(Guid libraryId, Guid bookId)
+    public async Task BorrowBook(int libraryId, int bookId)
     {
         var library =
             await _libraryRepository.GetLibrary(libraryId)
@@ -58,7 +58,7 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
         await _unitOfWork.SaveChangesAsync();
     }
 
-    public async Task ReturnBook(Guid libraryId, Guid bookId)
+    public async Task ReturnBook(int libraryId, int bookId)
     {
         var library =
             await _libraryRepository.GetLibrary(libraryId)
@@ -67,7 +67,7 @@ public class LibraryService(ILibraryRepository libraryRepository, IUnitOfWork un
         await _unitOfWork.SaveChangesAsync();
     }
 
-    public async Task<List<Book>> GetBooks(Guid libraryId, bool borrowed)
+    public async Task<List<Book>> GetBooks(int libraryId, bool borrowed)
     {
         var library =
             await _libraryRepository.GetLibrary(libraryId)
