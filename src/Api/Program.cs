@@ -1,4 +1,7 @@
 using Api.Database;
+using Api.Entities;
+using Api.Repositories;
+using Api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
+builder.Services.AddScoped<LibraryService>();
 
 var app = builder.Build();
 

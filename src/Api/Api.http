@@ -4,3 +4,25 @@ GET {{Api_HostAddress}}/api/
 Accept: application/json
 
 ###
+
+GET {{Api_HostAddress}}/api/libraries
+Accept: application/json
+
+###
+
+GET {{Api_HostAddress}}/api/libraries/b2cfe266-ff67-4742-bd62-5853e1ea719e
+Accept: application/json
+
+###
+
+POST {{Api_HostAddress}}/api/libraries
+Content-Type: application/json
+
+{
+    "name": "Library 1"
+}
+
+###
+
+DELETE {{Api_HostAddress}}/api/libraries/b2cfe266-ff67-4742-bd62-5853e1ea719e
+Accept: application/json
