@@ -44,7 +44,7 @@ Content-Type: application/json
 ]
 
 ###
-DELETE {{Api_HostAddress}}/api/libraries/1/books/3
+DELETE {{Api_HostAddress}}/api/libraries/1/books/5
 Accept: application/json
 
 ###

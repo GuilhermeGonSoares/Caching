@@ -31,7 +31,6 @@ public class Library
         var book =
             Books.FirstOrDefault(b => b.Id == bookId)
             ?? throw new InvalidOperationException("Book not found");
-
         Books.Remove(book);
     }
 

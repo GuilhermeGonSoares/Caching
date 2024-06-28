@@ -32,7 +32,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .Entity<Library>()
             .HasMany(l => l.Books) // Relacionamento um-para-muitos com Books
             .WithOne() // Sem propriedade de navegação inversa especificada
-            .HasForeignKey("LibraryId"); // Chave estrangeira em Books referenciando Library
+            .HasForeignKey("LibraryId")
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+        // Chave estrangeira em Books referenciando Library
 
         // Mapeamento para a entidade Book
         modelBuilder.Entity<Book>().HasKey(b => b.Id); // Definindo a chave primária
